@@ -1,3 +1,6 @@
+![PyPI](https://img.shields.io/pypi/v/cz-ai?label=pypi%20package)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/cz-ai)
+
 # 🤖 AI Commitizen Plugin
 
 A [Commitizen](https://github.com/commitizen-tools/commitizen) plugin that leverages OpenAI's GPT-4o to automatically generate clear, concise, and conventional commit messages based on your staged git changes.

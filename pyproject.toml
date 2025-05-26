@@ -18,3 +18,9 @@ cz_ai = "cz_cz_ai:Cz_aiCz"
 py-modules = ["cz_cz_ai"]
 include-package-data = true
 license-files = []
+
+[project.urls]
+"Homepage" = "https://github.com/watadarkstar/cz_ai"
+"Source" = "https://github.com/watadarkstar/cz_ai"
+"Issue Tracker" = "https://github.com/watadarkstar/cz_ai/issues"
+"Repository" = "https://github.com/watadarkstar/cz_ai"
