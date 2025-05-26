@@ -1,4 +1,4 @@
-![PyPI](https://img.shields.io/pypi/v/cz-ai?label=pypi)
+[![PyPI](https://img.shields.io/pypi/v/cz-ai?label=pypi)](https://pypi.org/project/cz-ai/)
 
 # 🤖 AI Commitizen Plugin
 
