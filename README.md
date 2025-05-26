@@ -52,7 +52,7 @@ cz commit
 ## Build
 
 ```
-python -m build
+python3 -m build
 ```
 
 ## Upload to pypi.org
