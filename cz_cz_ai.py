@@ -62,9 +62,25 @@ class Cz_aiCz(BaseCommitizen):
             temperature=0.7,
         )
 
-        commit_message = response.choices[0].message.content
-
-        print(f"OpenAI commit message:\n\n{commit_message}\n\n")
+        # Display all available choices
+        print("Available commit messages:")
+        for i, choice in enumerate(response.choices):
+            print(f"\n{i + 1}. {choice.message.content}")
+        
+        # Ask user to select a message
+        commit_message = None
+        while True:
+            try:
+                selection = int(input("\nPlease select a commit message (enter number): "))
+                if 1 <= selection <= len(response.choices):
+                    commit_message = response.choices[selection - 1].message.content
+                    break
+                else:
+                    print(f"Please enter a number between 1 and {len(response.choices)}")
+            except ValueError:
+                print("Please enter a valid number")
+        
+        print(f"\nSelected commit message:\n\n{commit_message}\n\n")
         
         # Ask user if they want to accept the message
         response = input("Is this auto-generated commit message OK? (Y/n): ").lower()
