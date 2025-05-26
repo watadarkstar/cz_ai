@@ -21,7 +21,6 @@ class Cz_aiCz(BaseCommitizen):
 
     def message(self, answers: dict) -> str:
         print("Generating commit message using OpenAI's GPT-4o...")
-        print(f"answers: {answers}")
 
         # Try to get API key from cache first
         cache_dir = Path.cwd() / ".commitizen"
