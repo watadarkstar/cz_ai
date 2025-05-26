@@ -1,18 +1,20 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "cz_ai"
 version = "0.1.0"
 description = "description for the cz"
+readme = "README.md"
+requires-python = ">=3.7"
 license = { file = "LICENSE" }
 dependencies = ["commitizen"]
-readme = "README.md"  # or remove this line if you don't have one
-requires-python = ">=3.7"
-
-[tool.setuptools]
-py-modules = ["cz_cz_ai"]
 
 [project.entry-points."commitizen.plugin"]
 cz_ai = "cz_cz_ai:Cz_aiCz"
+
+[tool.setuptools]
+py-modules = ["cz_cz_ai"]
+include-package-data = true
+license-files = []

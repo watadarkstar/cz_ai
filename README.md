@@ -15,7 +15,21 @@ A Commitizen plugin that leverages OpenAI's GPT-4o to automatically generate cle
 - Teams adopting conventional commits without manual formatting
 - Projects aiming for automated changelog generation and semantic versioning
 
+## Install
+
+Install the plugin:
+
+```
+pip install cz-ai==0.1.0
+```
+
 ## Usage
+
+```
+cz --name cz_ai commit
+```
+
+## Development
 
 Install the plugin locally:
 
