@@ -1,2 +1,3 @@
 openai==1.65.5
 subprocess
+prompt_toolkit=3.0.51

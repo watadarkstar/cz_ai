@@ -3,6 +3,7 @@ import openai
 import subprocess
 import json
 from pathlib import Path
+from prompt_toolkit import prompt
 
 MAX_DIFF_LENGTH = 8000
 MAX_TOKENS = 200
@@ -19,7 +20,7 @@ class Cz_aiCz(BaseCommitizen):
         ]
 
     def message(self, answers: dict) -> str:
-        print("Generating commit message using OpenAI's GPT-3...")
+        print("Generating commit message using OpenAI's GPT-4...")
         print(f"answers: {answers}")
 
         # Try to get API key from cache first
@@ -40,20 +41,22 @@ class Cz_aiCz(BaseCommitizen):
 
         git_diff = subprocess.check_output(["git", "diff"])
 
+        print(f"Git diff: {git_diff}")
+
         # Check if diff length is too large
         if len(git_diff) > MAX_DIFF_LENGTH:
             print("The diff is too large to write a commit message.")
             exit()
 
         # Prepare prompt for OpenAI in Conventional Commits style
-        prompt = f"Please generate a commit message in Conventional Commits style for the following changes:\n\n{git_diff.decode('utf-8')}\n\nType 'feat' for a new feature, 'fix' for a bug fix, 'docs' for documentation updates, 'style' for code style changes, 'refactor' for code refactoring, 'test' for test updates, 'chore' for build and tooling updates, or 'other' for any other changes:"
+        ai_prompt = f"Please generate a commit message in Conventional Commits style for the following changes:\n\n{git_diff.decode('utf-8')}\n\nType 'feat' for a new feature, 'fix' for a bug fix, 'docs' for documentation updates, 'style' for code style changes, 'refactor' for code refactoring, 'test' for test updates, 'chore' for build and tooling updates, or 'other' for any other changes:"
 
         # Generate text with OpenAI's GPT-4
         response = openai.chat.completions.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant that generates commit messages in Conventional Commits style."},
-                {"role": "user", "content": prompt}
+                {"role": "user", "content": ai_prompt}
             ],
             max_tokens=MAX_TOKENS,
             temperature=0.7,
@@ -68,7 +71,7 @@ class Cz_aiCz(BaseCommitizen):
         
         if response == 'n':
             # Let user modify the message
-            modified_message = input(f"Please enter your modified commit message [{commit_message}]: ")
+            modified_message = prompt("Please enter your modified commit message: ", default=commit_message)
             return modified_message.strip()
             
         return commit_message.strip()
