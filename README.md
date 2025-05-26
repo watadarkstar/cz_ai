@@ -49,6 +49,18 @@ Then run this command to test it:
 cz commit
 ```
 
+## Build
+
+```
+python -m build
+```
+
+## Upload to pypi.org
+
+```
+twine upload dist/*
+```
+
 ## Author
 
 Adrian C (author@commitizen)
