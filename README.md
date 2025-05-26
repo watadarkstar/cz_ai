@@ -17,8 +17,6 @@ A Commitizen plugin that leverages OpenAI's GPT-4o to automatically generate cle
 
 ## Install
 
-Install the plugin:
-
 ```
 pip install cz-ai
 ```
