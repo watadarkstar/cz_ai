@@ -37,11 +37,11 @@ class Cz_aiCz(BaseCommitizen):
         # Authenticate with OpenAI API
         openai.api_key = api_key
 
-        print(f"Using OpenAI API Key: {openai.api_key}")
+        print(f"Using OpenAI API Key: {openai.api_key}\n\n")
 
         git_diff = subprocess.check_output(["git", "diff"])
 
-        print(f"Git diff: {git_diff}")
+        print(f"Git diff: {git_diff}\n\n")
 
         # Check if diff length is too large
         if len(git_diff) > MAX_DIFF_LENGTH:
@@ -64,7 +64,7 @@ class Cz_aiCz(BaseCommitizen):
 
         commit_message = response.choices[0].message.content
 
-        print(f"OpenAI commit message:\n{commit_message}")
+        print(f"OpenAI commit message:\n\n{commit_message}\n\n")
         
         # Ask user if they want to accept the message
         response = input("Is this auto-generated commit message OK? (Y/n): ").lower()
