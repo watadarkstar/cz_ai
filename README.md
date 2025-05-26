@@ -4,7 +4,7 @@ A Commitizen plugin that leverages OpenAI's GPT-4 to automatically generate clea
 
 ## ✨ Features
 
-- 🔍 Analyzes your staged diffs using AI
+- 🔍 Analyzes your staged diffs using OpenAI GPT-4
 - 🧠 Generates commit messages that follow the [Conventional Commits](https://www.conventionalcommits.org/) specification
 - 💬 Suggests high-quality messages instantly to save time
 - 🛠️ Seamlessly integrates with existing Commitizen workflows
