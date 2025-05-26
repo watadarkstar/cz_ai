@@ -1,6 +1,6 @@
 # 🤖 AI Commitizen Plugin
 
-A Commitizen plugin that leverages AI to automatically generate clear, concise, and conventional commit messages based on your staged git changes.
+A Commitizen plugin that leverages OpenAI's GPT-4 to automatically generate clear, concise, and conventional commit messages based on your staged git changes.
 
 ## ✨ Features
 
