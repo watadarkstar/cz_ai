@@ -1,5 +1,4 @@
 ![PyPI](https://img.shields.io/pypi/v/cz-ai?label=pypi%20package)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/cz-ai)
 
 # 🤖 AI Commitizen Plugin
 
