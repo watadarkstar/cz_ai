@@ -39,7 +39,7 @@ class Cz_aiCz(BaseCommitizen):
 
         print(f"Using OpenAI API Key: {openai.api_key}\n\n")
 
-        git_diff = subprocess.check_output(["git", "diff"])
+        git_diff = subprocess.check_output(["git", "diff", "--staged"])
 
         print(f"Git diff: {git_diff}\n\n")
 
