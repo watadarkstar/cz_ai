@@ -1,5 +1,7 @@
 # cz_ai
 
+Generated using https://github.com/commitizen-tools/commitizen_cz_template
+
 ## Usage
 
 Install the plugin locally:
