@@ -20,7 +20,7 @@ class Cz_aiCz(BaseCommitizen):
         ]
 
     def message(self, answers: dict) -> str:
-        print("Generating commit message using OpenAI's GPT-4...")
+        print("Generating commit message using OpenAI's GPT-4o...")
         print(f"answers: {answers}")
 
         # Try to get API key from cache first
@@ -51,15 +51,16 @@ class Cz_aiCz(BaseCommitizen):
         # Prepare prompt for OpenAI in Conventional Commits style
         ai_prompt = f"Please generate a commit message in Conventional Commits style for the following changes:\n\n{git_diff.decode('utf-8')}\n\nType 'feat' for a new feature, 'fix' for a bug fix, 'docs' for documentation updates, 'style' for code style changes, 'refactor' for code refactoring, 'test' for test updates, 'chore' for build and tooling updates, or 'other' for any other changes:"
 
-        # Generate text with OpenAI's GPT-4
+        # Generate text with OpenAI's GPT-4o
         response = openai.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant that generates commit messages in Conventional Commits style."},
                 {"role": "user", "content": ai_prompt}
             ],
             max_tokens=MAX_TOKENS,
             temperature=0.7,
+            n=3  # Generate 5 different responses
         )
 
         # Display all available choices
@@ -71,7 +72,7 @@ class Cz_aiCz(BaseCommitizen):
         commit_message = None
         while True:
             try:
-                selection = int(input("\nPlease select a commit message (enter number): "))
+                selection = int(input("\nPlease select a commit message (enter number) [1]: ") or "1")
                 if 1 <= selection <= len(response.choices):
                     commit_message = response.choices[selection - 1].message.content
                     break
