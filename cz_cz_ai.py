@@ -1,50 +1,87 @@
 from commitizen.cz.base import BaseCommitizen
 import openai
 import subprocess
+import json
+from pathlib import Path
 
-# Authenticate with OpenAI API
-openai.api_key = "YOUR_API_KEY_HERE"
-
+MAX_DIFF_LENGTH = 8000
+MAX_TOKENS = 200
 class Cz_aiCz(BaseCommitizen):
     def questions(self) -> list:
+        api_key = self.get_open_ai_key()
         return [
             {
                 "type": "input",
                 "name": "openai_api_key",
                 "message": "Please enter your OpenAI API Key:",
-                "default": "",
+                "default": api_key if api_key else "",
             },
         ]
 
     def message(self, answers: dict) -> str:
         print("Generating commit message using OpenAI's GPT-3...")
         print(f"answers: {answers}")
+
+        # Try to get API key from cache first
+        cache_dir = Path.cwd() / ".commitizen"
+        cache_file = cache_dir / "openai_cache.json"
+        cache_api_key = self.get_open_ai_key()
+        api_key = answers.get("openai_api_key")
+        
+        # Update the cache if the API key has changed
+        if cache_api_key != api_key and api_key:
+            with open(cache_file, 'w') as f:
+                json.dump({'openai_api_key': api_key}, f)
+
+        # Authenticate with OpenAI API
+        openai.api_key = api_key
+
+        print(f"Using OpenAI API Key: {openai.api_key}")
+
         git_diff = subprocess.check_output(["git", "diff"])
 
         # Check if diff length is too large
-        if len(git_diff) > 8000:
+        if len(git_diff) > MAX_DIFF_LENGTH:
             print("The diff is too large to write a commit message.")
             exit()
 
         # Prepare prompt for OpenAI in Conventional Commits style
         prompt = f"Please generate a commit message in Conventional Commits style for the following changes:\n\n{git_diff.decode('utf-8')}\n\nType 'feat' for a new feature, 'fix' for a bug fix, 'docs' for documentation updates, 'style' for code style changes, 'refactor' for code refactoring, 'test' for test updates, 'chore' for build and tooling updates, or 'other' for any other changes:"
 
-        # Generate text with OpenAI's GPT-3
-        response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=prompt,
-        max_tokens=64,
-        n=1,
-        stop=None,
-        temperature=0.7,
+        # Generate text with OpenAI's GPT-4
+        response = openai.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant that generates commit messages in Conventional Commits style."},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=MAX_TOKENS,
+            temperature=0.7,
         )
 
-        # Extract the generated text from the OpenAI response
-        commit_type = response.choices[0].text.strip()
+        commit_message = response.choices[0].message.content
 
-        # Format the commit message using the commit type and the diff
-        commit_message = f"{commit_type}: {git_diff.decode('utf-8').splitlines()[0]}"
-
-        print(f"Generated commit message: {commit_message}")
-
-        raise NotImplementedError("Not Implemented yet")
+        print(f"OpenAI commit message:\n{commit_message}")
+        
+        # Ask user if they want to accept the message
+        response = input("Is this auto-generated commit message OK? (Y/n): ").lower()
+        
+        if response == 'n':
+            # Let user modify the message
+            modified_message = input(f"Please enter your modified commit message [{commit_message}]: ")
+            return modified_message.strip()
+            
+        return commit_message.strip()
+    
+    def get_open_ai_key(self):
+        cache_dir = Path.cwd() / ".commitizen"
+        cache_file = cache_dir / "openai_cache.json"
+        
+        if not cache_dir.exists():
+            cache_dir.mkdir(parents=True, exist_ok=True)
+        
+        if cache_file.exists():
+            with open(cache_file, 'r') as f:
+                cache = json.load(f)
+                return cache.get('openai_api_key')
+        return None
