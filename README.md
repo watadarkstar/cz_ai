@@ -10,6 +10,7 @@ A [Commitizen](https://github.com/commitizen-tools/commitizen) plugin that lever
 - 🧠 Generates commit messages that follow the [Conventional Commits](https://www.conventionalcommits.org/) specification
 - 💬 Suggests high-quality messages instantly to save time
 - 🛠️ Seamlessly integrates with existing Commitizen workflows
+- 🤖 Choose your preferred OpenAI model (gpt-4o-mini, gpt-4o, etc.)
 
 ## Install
 
