@@ -17,6 +17,12 @@ class Cz_aiCz(BaseCommitizen):
                 "message": "Please enter your OpenAI API Key:",
                 "default": api_key if api_key else "",
             },
+            {
+                "type": "input",
+                "name": "model",
+                "message": "Which OpenAI model would you like to use:",
+                "default": "gpt-4o-mini",
+            },
         ]
 
     def message(self, answers: dict) -> str:
@@ -27,6 +33,7 @@ class Cz_aiCz(BaseCommitizen):
         cache_file = cache_dir / "openai_cache.json"
         cache_api_key = self.get_open_ai_key()
         api_key = answers.get("openai_api_key")
+        model = answers.get("model", "gpt-4o-mini")
         
         # Update the cache if the API key has changed
         if cache_api_key != api_key and api_key:
@@ -52,7 +59,7 @@ class Cz_aiCz(BaseCommitizen):
 
         # Generate text with OpenAI's GPT-4o
         response = openai.chat.completions.create(
-            model="gpt-4o",
+            model=model,
             messages=[
                 {"role": "system", "content": "You are a helpful assistant that generates commit messages in Conventional Commits style."},
                 {"role": "user", "content": ai_prompt}
