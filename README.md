@@ -12,6 +12,11 @@ A [Commitizen](https://github.com/commitizen-tools/commitizen) plugin that lever
 - 🛠️ Seamlessly integrates with existing Commitizen workflows
 - 🤖 Choose your preferred OpenAI model (gpt-4o-mini, gpt-4o, etc.)
 
+## Prerequisites
+
+- Python 3.x
+- Install [commitizen](https://commitizen-tools.github.io/commitizen/#installation)
+
 ## Install
 
 ```
@@ -22,6 +27,15 @@ pip install cz-ai
 
 ```
 cz --name cz_ai commit
+```
+
+## Terminal Alias
+
+To make it persistent across sessions, add that line to your `~/.bashrc` or
+`~/.bash_profile` or ``/.config/fish/config.fish` or `~/.zshrc` (depending on your setup):
+
+```
+alias gai='cz --name cz_ai commit'
 ```
 
 ## Development
