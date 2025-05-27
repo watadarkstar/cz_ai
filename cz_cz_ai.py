@@ -61,7 +61,7 @@ class Cz_aiCz(BaseCommitizen):
         response = openai.chat.completions.create(
             model=model,
             messages=[
-                {"role": "system", "content": "You are a helpful assistant that generates commit messages in Conventional Commits style."},
+                {"role": "system", "content": "You are a helpful assistant that generates commit messages in Conventional Commits style. Do not include any markdown."},
                 {"role": "user", "content": ai_prompt}
             ],
             max_tokens=MAX_TOKENS,
