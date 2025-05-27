@@ -31,7 +31,7 @@ cz --name cz_ai commit
 
 ## Terminal Alias
 
-To make it persistent across sessions, add that line to your `~/.bashrc` or
+To make it persistent across sessions, add this line to your `~/.bashrc` or
 `~/.bash_profile` or `/.config/fish/config.fish` or `~/.zshrc` (depending on your setup):
 
 ```bash
