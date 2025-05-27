@@ -19,13 +19,13 @@ A [Commitizen](https://github.com/commitizen-tools/commitizen) plugin that lever
 
 ## Install
 
-```
+```bash
 pip install cz-ai
 ```
 
 ## Usage
 
-```
+```bash
 cz --name cz_ai commit
 ```
 
@@ -34,7 +34,7 @@ cz --name cz_ai commit
 To make it persistent across sessions, add that line to your `~/.bashrc` or
 `~/.bash_profile` or `/.config/fish/config.fish` or `~/.zshrc` (depending on your setup):
 
-```
+```bash
 alias gai='cz --name cz_ai commit'
 ```
 
@@ -42,13 +42,13 @@ alias gai='cz --name cz_ai commit'
 
 Install the plugin locally:
 
-```
+```bash
 pip install -e .
 ```
 
 Then check that cz recognizes the plugin:
 
-```
+```bash
 cz ls
 ```
 
@@ -56,19 +56,19 @@ It should appear as `cz_ai`
 
 Then run this command to test it:
 
-```
+```bash
 cz commit
 ```
 
 ## Build
 
-```
+```bash
 python3 -m build
 ```
 
 ## Upload to pypi.org
 
-```
+```bash
 twine upload dist/*
 ```
 
