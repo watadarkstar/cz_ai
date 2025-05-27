@@ -59,7 +59,7 @@ twine upload dist/*
 
 ## Author
 
-Adrian C (author@commitizen)
+Adrian C ([watadarkstar](https://github.com/watadarkstar/))
 
 ## Credits
 
