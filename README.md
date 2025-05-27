@@ -11,12 +11,6 @@ A [Commitizen](https://github.com/commitizen-tools/commitizen) plugin that lever
 - 💬 Suggests high-quality messages instantly to save time
 - 🛠️ Seamlessly integrates with existing Commitizen workflows
 
-## 🚀 Ideal For
-
-- Developers who want to maintain a consistent and meaningful commit history
-- Teams adopting conventional commits without manual formatting
-- Projects aiming for automated changelog generation and semantic versioning
-
 ## Install
 
 ```
