@@ -2,15 +2,15 @@
 
 # 🤖 AI Commitizen Plugin
 
-A [Commitizen](https://github.com/commitizen-tools/commitizen) plugin that leverages OpenAI's GPT-4o to automatically generate clear, concise, and conventional commit messages based on your staged git changes.
+A [Commitizen](https://github.com/commitizen-tools/commitizen) plugin that leverages OpenAI's GPT-4o and local LLMs from Ollama to automatically generate clear, concise, and conventional commit messages based on your staged git changes.
 
 ## Features
 
-- Analyzes your staged diffs using OpenAI GPT-4o
+- Analyzes your staged diffs using OpenAI GPT-4o or any LLM from Ollama
 - Generates commit messages that follow the [Conventional Commits](https://www.conventionalcommits.org/) specification
 - Suggests high-quality messages instantly to save time
 - Seamlessly integrates with existing Commitizen workflows
-- Choose your preferred OpenAI model (gpt-4o-mini, gpt-4o, etc.)
+- Choose your preferred OpenAI model (gpt-4o-mini, gpt-4o, etc.) or locally installed Ollama model
 
 ## Prerequisites
 
