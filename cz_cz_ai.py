@@ -8,7 +8,7 @@ import requests
 import re
 
 MAX_DIFF_LENGTH = 8000
-MAX_TOKENS = 600
+MAX_TOKENS = 200
 
 class Cz_aiCz(BaseCommitizen):
     def get_ollama_models(self) -> list:
@@ -176,7 +176,6 @@ class Cz_aiCz(BaseCommitizen):
                     ],
                     "stream": False,
                     "options": {
-                        "num_predict": MAX_TOKENS,
                         "temperature": 0.7
                     }
                 },
