@@ -7,12 +7,11 @@ from prompt_toolkit import prompt
 import requests
 import re
 
-MAX_DIFF_LENGTH = 16000
+MAX_DIFF_LENGTH = 8000
 MAX_TOKENS = 600
 
 class Cz_aiCz(BaseCommitizen):
     def get_ollama_models(self) -> list:
-        """Fetches the list of locally installed Ollama models."""
         try:
             response = requests.get("http://localhost:11434/api/tags")
             response.raise_for_status()
@@ -139,12 +138,32 @@ class Cz_aiCz(BaseCommitizen):
             except ValueError:
                 print("Please enter a valid number")
 
+    def clean_ollama_response(self, raw_text: str) -> str:
+        """
+        Finds the start of the conventional commit and discards any preceding text.
+        """
+        commit_types = [
+            "feat", "fix", "docs", "style", "refactor", "test", "chore",
+            "build", "ci", "perf", "revert"
+        ]
+        # Create a regex pattern to find a line starting with a commit type.
+        types_pattern = "|".join(commit_types)
+        regex = re.compile(rf"^\s*({types_pattern})(\(.*\))?:", re.MULTILINE)
+
+        match = regex.search(raw_text)
+
+        if match:
+            return raw_text[match.start():].strip()
+        
+        return raw_text.strip()
+
     def get_ollama_commit_message(self, model, diff_text):
-        """
-        Gets a commit message from Ollama and strips the <think> block.
-        """
-        system_prompt = "You are an expert at writing Conventional Commits. You are a robot that ONLY outputs the raw text of a valid commit message and nothing else. You never explain your reasoning. You never use markdown. Your entire response is the commit message."
-        user_prompt = f"Generate a Conventional Commit message for the following git diff:\n\n{diff_text}"
+        system_prompt = (
+            "You are an expert at writing Conventional Commits. Your task is to create a commit message that has a subject line and a detailed body. "
+            "The format must be: `<type>(<scope>): <subject>\n\n<detailed body explaining the why and how>`. "
+            "Your entire response must be ONLY the raw text of this commit message. Do not include any other explanations."
+        )
+        user_prompt = f"Generate a Conventional Commit message with a subject and a detailed body for the following git diff:\n\n{diff_text}"
 
         try:
             response = requests.post(
@@ -168,11 +187,7 @@ class Cz_aiCz(BaseCommitizen):
             response_data = response.json()
             raw_response = response_data.get("message", {}).get("content", "").strip()
             
-            # Use regex to find and remove the entire <think>...</think> block
-            # re.DOTALL makes '.' match newlines, in case the block spans multiple lines
-            commit_message = re.sub(r"<think>.*?</think>", "", raw_response, flags=re.DOTALL).strip()
-            
-            return commit_message
+            return self.clean_ollama_response(raw_response)
 
         except requests.exceptions.ConnectionError:
             print("\nError: Could not connect to Ollama.")
