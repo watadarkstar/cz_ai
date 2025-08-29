@@ -1,3 +1,4 @@
 openai==1.65.5
 prompt_toolkit==3.0.51
 requests==2.32.5
+commitizen==4.8.3
