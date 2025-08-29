@@ -79,6 +79,7 @@ cz commit
 ## Build
 
 ```bash
+rm -rf dist/
 uv build
 ```
 
