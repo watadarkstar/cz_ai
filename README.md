@@ -79,7 +79,7 @@ cz commit
 ## Build
 
 ```bash
-python3 -m build
+uv build
 ```
 
 ## Upload to pypi.org
