@@ -4,7 +4,7 @@
 
 <p align="center">
 A <a href="https://github.com/commitizen-tools/commitizen"
-target="_blank">Commitizen</a> plugin that leverages OpenAI's GPT-4o to automatically generate clear,<br />concise, and conventional commit messages based on your staged git changes.
+target="_blank">Commitizen</a> plugin that leverages OpenAI's GPT-4o and local LLMs from Ollama to automatically generate clear,<br />concise, and conventional commit messages based on your staged git changes.
 </p>
 
 <p align="center">
@@ -22,11 +22,11 @@ target="_blank">Commitizen</a> plugin that leverages OpenAI's GPT-4o to automati
 
 ## Features
 
-- Analyzes your staged diffs using OpenAI GPT-4o
+- Analyzes your staged diffs using OpenAI GPT-4o or any LLM from Ollama
 - Generates commit messages that follow the [Conventional Commits](https://www.conventionalcommits.org/) specification
 - Suggests high-quality messages instantly to save time
 - Seamlessly integrates with existing Commitizen workflows
-- Choose your preferred OpenAI model (gpt-4o-mini, gpt-4o, etc.)
+- Choose your preferred OpenAI model (gpt-4o-mini, gpt-4o, etc.) or locally installed Ollama model
 
 ## Prerequisites
 
@@ -93,14 +93,21 @@ twine upload dist/*
 
 Adrian C ([watadarkstar](https://github.com/watadarkstar/))
 
-## Credits
-
-Generated using this template: https://github.com/commitizen-tools/commitizen_cz_template
-
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).  
 Feel free to use, modify, and distribute it as needed.
+
+## Credits
+
+Generated using this template: https://github.com/commitizen-tools/commitizen_cz_template
+
+### Github Contributors
+
+Thanks to these awesome contributors and many more! 🧘
+
+[![](https://github.com/watadarkstar.png?size=50)](https://github.com/watadarkstar)
+[![](https://github.com/dcvdiego.png?size=50)](https://github.com/dcvdiego)
 
 ---
 
