@@ -97,14 +97,21 @@ twine upload dist/*
 
 Adrian C ([watadarkstar](https://github.com/watadarkstar/))
 
-## Credits
-
-Generated using this template: https://github.com/commitizen-tools/commitizen_cz_template
-
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).  
 Feel free to use, modify, and distribute it as needed.
+
+## Credits
+
+Generated using this template: https://github.com/commitizen-tools/commitizen_cz_template
+
+### Github Contributors
+
+Thanks to these awesome contributors and many more! 🧘
+
+[![](https://github.com/watadarkstar.png?size=50)](https://github.com/watadarkstar)
+[![](https://github.com/dcvdiego.png?size=50)](https://github.com/dcvdiego)
 
 ---
 
