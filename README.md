@@ -1,8 +1,24 @@
-[![PyPI](https://img.shields.io/pypi/v/cz-ai?label=pypi)](https://pypi.org/project/cz-ai/)
+<h3 align="center">
+  🤖 AI Commitizen Plugin
+</h3>
 
-# 🤖 AI Commitizen Plugin
+<p align="center">
+A <a href="https://github.com/commitizen-tools/commitizen"
+target="_blank">Commitizen</a> plugin that leverages OpenAI's GPT-4o to automatically generate clear,<br />concise, and conventional commit messages based on your staged git changes.
+</p>
 
-A [Commitizen](https://github.com/commitizen-tools/commitizen) plugin that leverages OpenAI's GPT-4o to automatically generate clear, concise, and conventional commit messages based on your staged git changes.
+<p align="center">
+  <a href="https://pypi.org/project/cz-ai/">
+    <img alt="npm version" src="https://img.shields.io/pypi/v/cz-ai?label=pypi"/>
+  </a>
+  <a title='License' href="https://github.com/watadarkstar/cz_ai/blob/master/LICENSE" height="18">
+    <img src='https://img.shields.io/badge/license-MIT-blue.svg' />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://x.com/icookandcode" target="_blank">Need help building your AI tool? Connect with Adrian on X 🚀 </a>
+</p>
 
 ## Features
 
@@ -84,3 +100,19 @@ Generated using this template: https://github.com/commitizen-tools/commitizen_cz
 
 This project is licensed under the [MIT License](LICENSE).  
 Feel free to use, modify, and distribute it as needed.
+
+---
+
+<div align="center">
+
+**Ready to build your AI tool?**
+
+⭐ **Star this repo** • 💬 **[Contact Adrian to Build It](https://x.com/icookandcode)**
+
+_Built with ❤️ by [Adrian](https://x.com/icookandcode)_
+
+</div>
+
+---
+
+**Keywords:** react-native, react, parlant, ai, tool, commits, python, commitizen
