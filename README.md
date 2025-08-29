@@ -1,7 +1,3 @@
-[![PyPI](https://img.shields.io/pypi/v/cz-ai?label=pypi)](https://pypi.org/project/cz-ai/)
-
-# 🤖 AI Commitizen Plugin
-
 <h3 align="center">
   🤖 AI Commitizen Plugin
 </h3>
