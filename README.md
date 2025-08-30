@@ -106,8 +106,8 @@ Generated using this template: https://github.com/commitizen-tools/commitizen_cz
 
 Thanks to these awesome contributors and many more! 🧘
 
-[![](https://github.com/watadarkstar.png?size=50)](https://github.com/watadarkstar)
-[![](https://github.com/dcvdiego.png?size=50)](https://github.com/dcvdiego)
+<a href="https://github.com/watadarkstar"><img src="https://github.com/watadarkstar.png" width="50" height="50" /></a>
+<a href="https://github.com/dcvdiego"><img src="https://github.com/dcvdiego.png" width="50" height="50" /></a>
 
 ---
 
