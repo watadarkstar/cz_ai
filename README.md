@@ -95,7 +95,7 @@ twine upload dist/*
 
 Adrian C ([watadarkstar](https://github.com/watadarkstar/))
 
-## 📄 License
+## License
 
 This project is licensed under the [MIT License](LICENSE).  
 Feel free to use, modify, and distribute it as needed.
