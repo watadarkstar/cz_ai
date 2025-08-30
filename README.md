@@ -4,7 +4,7 @@
 
 <p align="center">
 A <a href="https://github.com/commitizen-tools/commitizen"
-target="_blank">Commitizen</a> plugin that leverages OpenAI's GPT-4o<br /> 
+target="_blank">Commitizen</a> plugin that leverages OpenAI's models<br /> 
 and local LLMs from Ollama to automatically generate clear, concise, and<br /> 
 conventional commit messages based on your staged git changes.
 </p>
